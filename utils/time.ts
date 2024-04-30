@@ -1,4 +1,4 @@
-import { importConfig } from '../index'
+import importConfig from '../importConfig'
 import { logQueryResult } from '../log/LogQueryResult'
 
 

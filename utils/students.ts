@@ -1,5 +1,5 @@
-import { importConfig } from '../index'
 import { logQueryResult } from '../log/LogQueryResult'
+import importConfig from '../importConfig'
 
 /**
  * Checks whether a student that is identified by his matricelnumber (matno) exists

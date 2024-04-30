@@ -1,4 +1,4 @@
-import { importConfig } from '../index'
+import importConfig from '../importConfig'
 import { readFileSync } from 'fs'
 import { existsSync } from 'node:fs'
 import getKeys from './Keys'

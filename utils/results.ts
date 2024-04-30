@@ -1,5 +1,4 @@
 
-import { importConfig } from '../index'
 import { readFileSync } from 'fs'
 import { existsSync, readdirSync } from 'node:fs'
 import { QueryResult } from 'pg'
@@ -7,6 +6,7 @@ import { array, object, string, z } from 'zod'
 import { validateTime } from './time'
 import { validateStudent } from './students'
 import logQueryResults from '../log/LogQueryResult'
+import importConfig from '../importConfig'
 
 const schema = z.object({
   course: string(),
