@@ -1,4 +1,6 @@
+ # Remove the datapath property if you want to use the default dataset
  dataPath=..../DataEngineering/Assignment4/aau
+ 
  databaseHost=
  databasePort=
  databaseName=
