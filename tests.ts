@@ -4,10 +4,11 @@ import { importMetadata } from './utils/metadata'
 import { importResults } from './utils/results'
 import * as dotenv from 'dotenv'
 import { z } from 'zod'
+import clearTables from './utils/reset'
 
 dotenv.config()
 const envSchema = z.object({
-  dataPath: z.string(),
+  dataPath: z.string().optional(),
   databaseHost: z.string(),
   databasePort: z.string(),
   databaseName: z.string(),
@@ -28,6 +29,9 @@ async function main(){
     password: env.databasePassword
   })
 
+  const path = env.dataPath || "./data"
+  console.log("Using data from:", path)
+
   try{
     await client.connect()
     console.log('Successfully connected to the database')
@@ -35,10 +39,10 @@ async function main(){
     throw err
   }
 
-
-  await importCourses({path: `${env.dataPath}/aau_corses.json`, client})
-  await importMetadata({path: `${env.dataPath}/aau_metadata.json`, client})
-  await importResults({ path: `${env.dataPath}/results`, client })
+  await clearTables(client)
+  await importCourses({path: `${path}/aau_corses.json`, client})
+  await importMetadata({path: `${path}/aau_metadata.json`, client})
+  await importResults({ path: `${path}/results`, client })
 
 
   await client.end()
